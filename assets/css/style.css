@@ -1,0 +1,718 @@
+/* EliteDrive Car Rental - Charcoal + Electric Blue Theme (UI/Technology) */
+:root {
+    /* Charcoal base */
+    --bg-dark: #0a0a0c;
+    --bg-card: #121216;
+    --bg-card-hover: #1a1a20;
+    --bg-elevated: #0f0f12;
+
+    /* Cool Gray text */
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+
+    /* Electric Blue accents */
+    --accent: #3B82F6;          /* Electric Blue */
+    --accent-hover: #60A5FA;    /* Lighter Blue */
+    --accent-dark: #2563EB;     /* Deeper Blue */
+
+    /* Supporting */
+    --border-color: rgba(59, 130, 246, 0.15);
+    --glass: rgba(59, 130, 246, 0.06);
+    --success: #22c55e;         /* Green */
+    --danger: #ef4444;
+
+    --radius: 12px;
+    --radius-lg: 16px;
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.55);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 76px;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.brand-text {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.text-accent { color: var(--accent) !important; }
+.bg-accent { background-color: var(--accent) !important; }
+
+/* Navigation */
+.main-nav {
+    background: rgba(5, 8, 15, 0.92) !important;
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.75rem 0;
+    transition: var(--transition);
+}
+
+.main-nav.scrolled {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.navbar-brand {
+    font-size: 1.4rem;
+}
+
+.nav-link {
+    color: var(--text-secondary) !important;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem !important;
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--text-primary) !important;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 1rem;
+    right: 1rem;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+}
+
+/* Buttons */
+.btn-accent {
+    background: var(--accent);
+    color: #ffffff !important;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1.5rem;
+    transition: var(--transition);
+}
+
+.btn-accent:hover {
+    background: var(--accent-hover);
+    color: #ffffff !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 18px rgba(59, 130, 246, 0.4);
+}
+
+.btn-outline-accent {
+    border: 2px solid var(--accent);
+    color: var(--accent) !important;
+    background: transparent;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 0.55rem 1.4rem;
+    transition: var(--transition);
+}
+
+.btn-outline-accent:hover {
+    background: var(--accent);
+    color: #ffffff !important;
+}
+
+.btn-dark-glass {
+    background: var(--glass);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.btn-dark-glass:hover {
+    background: rgba(255,255,255,0.1);
+    color: var(--text-primary);
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #0a0a0c 0%, #121216 50%, #0a0a0c 100%);
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(59, 130, 246, 0.12) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+}
+
+.hero p.lead {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 540px;
+}
+
+/* Search Box */
+.search-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    box-shadow: var(--shadow);
+    margin-top: -60px;
+    position: relative;
+    z-index: 10;
+}
+
+.search-box .form-control,
+.search-box .form-select {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+}
+
+.search-box .form-control:focus,
+.search-box .form-select:focus {
+    background: var(--bg-elevated);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.2);
+    color: var(--text-primary);
+}
+
+.search-box .form-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.4rem;
+}
+
+/* Cards */
+.car-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: var(--transition);
+    height: 100%;
+}
+
+.car-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(59, 130, 246, 0.4);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+}
+
+.car-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.car-card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+.car-card .card-body {
+    padding: 1.25rem;
+}
+
+.car-card .price {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.car-card .price small {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+
+.car-specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.car-specs span {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+/* Category Cards */
+.category-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    text-align: center;
+    transition: var(--transition);
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.category-card:hover {
+    border-color: var(--accent);
+    background: var(--bg-card-hover);
+    color: inherit;
+    transform: translateY(-4px);
+}
+
+.category-card i {
+    font-size: 2rem;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+}
+
+/* Features / Why Us */
+.feature-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    height: 100%;
+    transition: var(--transition);
+}
+
+.feature-box:hover {
+    border-color: rgba(59, 130, 246, 0.35);
+}
+
+.feature-box .icon-wrap {
+    width: 64px;
+    height: 64px;
+    background: rgba(59, 130, 246, 0.14);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+}
+
+.feature-box .icon-wrap i {
+    font-size: 1.5rem;
+    color: var(--accent);
+}
+
+/* Reviews */
+.review-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    height: 100%;
+}
+
+.review-card .stars {
+    color: var(--accent);
+}
+
+/* Section Titles */
+.section-title {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+}
+
+/* Filters Sidebar */
+.filter-sidebar {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    position: sticky;
+    top: 100px;
+}
+
+.filter-sidebar .form-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.filter-sidebar .form-control,
+.filter-sidebar .form-select {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 8px;
+}
+
+.filter-sidebar .form-control:focus,
+.filter-sidebar .form-select:focus {
+    background: var(--bg-elevated);
+    border-color: var(--accent);
+    color: var(--text-primary);
+    box-shadow: none;
+}
+
+/* Car Details */
+.gallery-main {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--bg-card);
+}
+
+.gallery-main img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.gallery-thumbs img {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: var(--transition);
+}
+
+.gallery-thumbs img:hover,
+.gallery-thumbs img.active {
+    border-color: var(--accent);
+}
+
+.detail-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+}
+
+.price-box {
+    background: linear-gradient(135deg, rgba(59,130,246,0.15), rgba(59,130,246,0.05));
+    border: 1px solid rgba(59,130,246,0.35);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+}
+
+/* Forms */
+.form-control, .form-select {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 8px;
+}
+
+.form-control:focus, .form-select:focus {
+    background: var(--bg-elevated);
+    border-color: var(--accent);
+    color: var(--text-primary);
+    box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.2);
+}
+
+.form-control::placeholder {
+    color: var(--text-muted);
+}
+
+/* Auth Pages */
+.auth-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    max-width: 440px;
+    margin: 2rem auto;
+    box-shadow: var(--shadow);
+}
+
+/* Booking Summary */
+.booking-summary {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    position: sticky;
+    top: 100px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.summary-row.total {
+    border-bottom: none;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent);
+    padding-top: 1rem;
+}
+
+/* Footer */
+.footer {
+    background: #0a0a0c;
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
+}
+
+.footer-links a, .footer-contact li {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 0.5rem;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--glass);
+    border-radius: 50%;
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    background: var(--accent);
+    color: #ffffff;
+}
+
+/* Admin styles */
+.admin-sidebar {
+    background: var(--bg-card);
+    min-height: 100vh;
+    border-right: 1px solid var(--border-color);
+    padding: 1.5rem 0;
+}
+
+.admin-sidebar .nav-link {
+    color: var(--text-secondary) !important;
+    padding: 0.75rem 1.5rem !important;
+    border-radius: 0;
+}
+
+.admin-sidebar .nav-link:hover,
+.admin-sidebar .nav-link.active {
+    background: rgba(59, 130, 246, 0.14);
+    color: var(--accent) !important;
+}
+
+.stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+    border-color: rgba(59, 130, 246, 0.4);
+}
+
+.stat-card .stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.stat-card .stat-label {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+/* Tables */
+.table-dark-custom {
+    --bs-table-bg: var(--bg-card);
+    --bs-table-border-color: var(--border-color);
+    --bs-table-striped-bg: var(--bg-elevated);
+    color: var(--text-primary);
+}
+
+/* Utilities */
+.glass {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+}
+
+.rounded-lg { border-radius: var(--radius-lg); }
+
+/* Responsive */
+@media (max-width: 991.98px) {
+    .search-box {
+        margin-top: 1.5rem;
+    }
+    
+    .filter-sidebar {
+        position: static;
+        margin-bottom: 1.5rem;
+    }
+    
+    .gallery-main img {
+        height: 280px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    body {
+        padding-top: 70px;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .car-card .card-img-top {
+        height: 180px;
+    }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-up {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: #1a2438;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #243049;
+}
+/* ===== Bootstrap text visibility overrides (dark theme) ===== */
+.text-muted,
+.text-secondary,
+.form-text,
+.form-label,
+small, .small {
+    color: var(--text-secondary) !important;
+}
+
+.text-body,
+.text-black,
+.text-dark:not(.badge):not(.btn):not(.bg-accent) {
+    color: var(--text-primary) !important;
+}
+
+.form-control,
+.form-select,
+.form-control:focus,
+.form-select:focus {
+    color: var(--text-primary) !important;
+    background-color: var(--bg-elevated) !important;
+}
+
+.form-control::placeholder {
+    color: var(--text-muted) !important;
+    opacity: 1;
+}
+
+.form-select option {
+    background: var(--bg-card);
+    color: var(--text-primary);
+}
+
+/* Keep dark text only on gold backgrounds */
+.bg-accent,
+.btn-accent,
+.badge.bg-accent,
+.social-links a:hover {
+    color: #ffffff !important;
+}
+
+/* Tables */
+.table,
+.table td,
+.table th {
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Breadcrumb */
+.breadcrumb-item,
+.breadcrumb-item a {
+    color: var(--text-secondary) !important;
+}
+.breadcrumb-item.active {
+    color: var(--text-primary) !important;
+}
+
+/* Card text fallbacks */
+.card,
+.card-body,
+.card-title,
+.card-text {
+    color: var(--text-primary);
+}
+
+/* Alert / list group readability */
+.list-group-item {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
